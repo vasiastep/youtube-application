@@ -1,4 +1,4 @@
-import { FETCH_VIDEOS, SELECT_VIDEO } from '../CONSTS_AND_TYPES'
+import { FETCH_VIDEOS, SELECT_VIDEO, SET_INPUT, CLEAR_INPUT } from '../CONSTS_AND_TYPES'
 
 export const VideoReducer = (state, action) => {
   switch (action.type) {
@@ -11,6 +11,16 @@ export const VideoReducer = (state, action) => {
       return {
         ...state,
         selectedVideo: action.payload,
+      }
+    case SET_INPUT:
+      return {
+        ...state,
+        inputValue: action.payload,
+      }
+    case CLEAR_INPUT:
+      return {
+        ...state,
+        inputValue: '',
       }
     default:
       return state

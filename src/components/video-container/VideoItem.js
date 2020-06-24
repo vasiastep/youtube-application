@@ -1,9 +1,13 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { VideoContext } from '../../context/Videos/VideoContext'
+import { ThemeContext } from '../../context/Theme/ThemeContext'
 
 export const VideoItem = ({ video, smaller }) => {
   const { selectVideo } = useContext(VideoContext)
+  const { theme } = useContext(ThemeContext)
+
+  console.log(theme)
 
   const smallerStyles = {
     height: '50px',
@@ -38,8 +42,11 @@ export const VideoItem = ({ video, smaller }) => {
         <div onClick={clickHandler}>
           <div className="d-flex video-item">
             <div style={biggerStyles}></div>
-            <div className="video-info ml-2">
-              <b>{video.snippet.title}</b>
+            <div
+              className="video-info ml-2"
+              style={{ color: theme === 'dark' ? '#aaa' : '#606060' }}
+            >
+              <b style={{ color: theme === 'dark' ? '#fff' : '#000' }}>{video.snippet.title}</b>
               <small>{video.snippet.channelTitle}</small>
               {!smaller ? (
                 <small>
@@ -55,12 +62,15 @@ export const VideoItem = ({ video, smaller }) => {
 
   return (
     <>
-      <div onClick={clickHandler}>
+      <div onClick={clickHandler} title={video.snippet.title}>
         <Link to="/watch" style={{ textDecoration: 'none' }}>
           <div className={`d-flex ${smaller ? '' : 'video-item'}`}>
             <div style={!smaller ? biggerStyles : smallerStyles}></div>
-            <div className="video-info ml-2">
-              <b>{video.snippet.title}</b>
+            <div
+              className="video-info ml-2"
+              style={{ color: theme === 'dark' ? '#aaa' : '#606060' }}
+            >
+              <b style={{ color: theme === 'dark' ? '#fff' : '#000' }}>{video.snippet.title}</b>
               <small>{video.snippet.channelTitle}</small>
               {!smaller ? (
                 <small>

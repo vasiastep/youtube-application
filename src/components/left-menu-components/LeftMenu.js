@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHome,
@@ -11,25 +12,35 @@ import {
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons'
 import { MenuContext } from '../../context/Left_Menu/MenuContext'
+import { ThemeContext } from '../../context/Theme/ThemeContext'
 
 export const LeftMenu = () => {
   const { biggerMenu } = useContext(MenuContext)
+  const { theme } = useContext(ThemeContext)
   const menuStyles = {
     width: '230px',
     height: '100vh',
     overflow: 'auto',
+    color: theme === 'dark' ? '#fff' : '#000',
+    backgroundColor: theme === 'dark' ? '#343A40' : '#fff',
+  }
+  const linkStyles = {
+    color: theme === 'dark' ? '#fff' : '#000',
+    textDecoration: 'none',
   }
   const smallMenuStyles = {
     width: '75px',
     height: '100vh',
     overflow: 'auto',
     paddingTop: '10px',
+    color: theme === 'dark' ? '#fff' : '#000',
+    backgroundColor: theme === 'dark' ? '#343A40' : '#fff',
   }
 
   return (
     <>
       {!biggerMenu ? (
-        <div className="bg-dark text-white" style={smallMenuStyles}>
+        <div style={smallMenuStyles}>
           <p className="left-menu-item small-menu-item d-flex flex-column align-items-center p-2">
             <FontAwesomeIcon icon={faHome} style={{ fontSize: '20px' }} />
             <span style={{ fontSize: '10px' }}>Головна</span>
@@ -48,7 +59,7 @@ export const LeftMenu = () => {
           </p>
         </div>
       ) : (
-        <div className="bg-dark text-white" style={menuStyles}>
+        <div style={menuStyles}>
           <div>
             <p className="left-menu-item">
               <FontAwesomeIcon icon={faHome} style={{ marginRight: '10px' }} />
@@ -79,10 +90,12 @@ export const LeftMenu = () => {
               <FontAwesomeIcon icon={faClock} style={{ marginRight: '10px' }} />
               Переглянути пізніше
             </p>
-            <p className="left-menu-item">
-              <FontAwesomeIcon icon={faThumbsUp} style={{ marginRight: '10px' }} />
-              Відео, які сподобалися
-            </p>
+            <Link to="/liked" style={linkStyles}>
+              <p className="left-menu-item">
+                <FontAwesomeIcon icon={faThumbsUp} style={{ marginRight: '10px' }} />
+                Відео, які сподобалися
+              </p>
+            </Link>
           </div>
         </div>
       )}
