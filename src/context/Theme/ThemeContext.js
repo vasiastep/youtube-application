@@ -5,7 +5,7 @@ import { SET_DARK_THEME, SET_LIGHT_THEME } from '../CONSTS_AND_TYPES'
 export const ThemeContext = createContext()
 
 const initialTheme = {
-  theme: 'light',
+  theme: 'dark',
 }
 
 export const ThemeContextProvider = ({ children }) => {

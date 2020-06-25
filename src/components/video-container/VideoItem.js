@@ -7,8 +7,6 @@ export const VideoItem = ({ video, smaller }) => {
   const { selectVideo } = useContext(VideoContext)
   const { theme } = useContext(ThemeContext)
 
-  console.log(theme)
-
   const smallerStyles = {
     height: '50px',
     width: '89px',

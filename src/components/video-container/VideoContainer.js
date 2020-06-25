@@ -4,10 +4,9 @@ import { VideosList } from './VideosList'
 
 export const VideoContainer = () => {
   const { videos, fetchVideosOnLoad } = useContext(VideoContext)
-  console.log(videos)
 
   useEffect(() => {
-    // fetchVideosOnLoad()
+    fetchVideosOnLoad()
   }, [])
 
   const myVideos = [
@@ -29,7 +28,7 @@ export const VideoContainer = () => {
 
   return (
     <>
-      <VideosList videos={myVideos} />
+      <VideosList videos={videos} />
     </>
   )
 }

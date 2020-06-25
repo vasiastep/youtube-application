@@ -13,7 +13,7 @@ export const WatchPage = () => {
     <>
       <div
         className="d-flex justify-content-between"
-        style={{ backgroundColor: theme === 'dark' ? '#181818' : '#F9F9F9', height: '100vh' }}
+        style={{ backgroundColor: theme === 'dark' ? '#181818' : '#F9F9F9', minHeight: '100vh' }}
       >
         <WatchVideo video={selected} />
         <VideosList videos={newVideoList} smaller={true} />

@@ -1,15 +1,68 @@
 import React, { useReducer } from 'react'
 import { VideoReducer } from './VideoReducer'
-import { SELECT_VIDEO, API_KEY, FETCH_VIDEOS, SET_INPUT, CLEAR_INPUT } from '../CONSTS_AND_TYPES'
+import {
+  SELECT_VIDEO,
+  API_KEY,
+  FETCH_VIDEOS,
+  SET_INPUT,
+  CLEAR_INPUT,
+  ADD_TO_LIKED,
+  REMOVE_FROM_LIKED,
+} from '../CONSTS_AND_TYPES'
 import youtube from './youtube'
 
 export const VideoContext = React.createContext()
+
+const testingVideos = [
+  {
+    id: 'youtube#video',
+    etag: Math.random() * 100000,
+    snippet: {
+      title: 'Video name',
+      channelTitle: 'Channel title',
+      thumbnails: {
+        medium: {
+          url:
+            'https://i.ytimg.com/vi/5qap5aO4i9A/hq720_live.jpg?sqp=CPTXxvcF-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBtc6MgIb9uWEL5e6rBsQAxJHpPwQ',
+        },
+      },
+    },
+  },
+  {
+    id: 'youtube#video',
+    etag: Math.random() * 100000,
+    snippet: {
+      title: 'Video name',
+      channelTitle: 'Channel title',
+      thumbnails: {
+        medium: {
+          url:
+            'https://i.ytimg.com/vi/5qap5aO4i9A/hq720_live.jpg?sqp=CPTXxvcF-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBtc6MgIb9uWEL5e6rBsQAxJHpPwQ',
+        },
+      },
+    },
+  },
+  {
+    id: 'youtube#video',
+    etag: Math.random() * 100000,
+    snippet: {
+      title: 'Video name',
+      channelTitle: 'Channel title',
+      thumbnails: {
+        medium: {
+          url:
+            'https://i.ytimg.com/vi/5qap5aO4i9A/hq720_live.jpg?sqp=CPTXxvcF-oaymwEZCNAFEJQDSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBtc6MgIb9uWEL5e6rBsQAxJHpPwQ',
+        },
+      },
+    },
+  },
+]
 
 const initialVideoState = {
   inputValue: '',
   videos: [],
   selectedVideo: null,
-  likedVideos: [],
+  likedVideos: JSON.parse(localStorage.getItem('liked')) || [],
 }
 
 export const VideoContextProvider = ({ children }) => {
@@ -77,16 +130,27 @@ export const VideoContextProvider = ({ children }) => {
       .then((videos) => dispatch({ type: FETCH_VIDEOS, payload: videos }))
   }
 
+  const addToLikedVideos = (video) => {
+    dispatch({ type: ADD_TO_LIKED, payload: video })
+  }
+
+  const removeFromLikedVideos = (video) => {
+    dispatch({ type: REMOVE_FROM_LIKED, payload: video })
+  }
+
   return (
     <VideoContext.Provider
       value={{
+        inputValue: state.inputValue,
         videos: state.videos,
         selected: state.selectedVideo,
+        likedVideos: state.likedVideos,
         fetchVideos,
         selectVideo,
         setInputValue,
         clearInputValue,
-        inputValue: state.inputValue,
+        addToLikedVideos,
+        removeFromLikedVideos,
         fetchVideosOnLoad: defaultFetch,
       }}
     >
