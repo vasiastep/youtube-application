@@ -78,9 +78,9 @@ export const WatchVideo = ({ video }) => {
             />
           </span>
         </p>
-        <p style={textStyle}>
+        {/* <p style={textStyle}>
           Опубліковано: {new Date(video.snippet.publishTime).toLocaleDateString()}
-        </p>
+        </p> */}
       </div>
     </div>
   )

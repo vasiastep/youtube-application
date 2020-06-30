@@ -6,7 +6,7 @@ export const VideoContainer = () => {
   const { videos, fetchVideosOnLoad } = useContext(VideoContext)
 
   useEffect(() => {
-    fetchVideosOnLoad()
+    // fetchVideosOnLoad()
   }, [])
 
   const myVideos = [
