@@ -51,6 +51,10 @@ code {
     position: absolute;
     width: 100px;
   }
+
+  .input {
+    height: 25px !important;
+  }
 }
 
 .channel {
@@ -123,10 +127,14 @@ code {
   height: 20px;
 }
 
-.input {
-  height: 20px !important;
-  /* border: none !important; */
+@media (min-width: 480px) {
+  .input {
+    height: 20px !important;
+    /* border: none !important; */
+  }
+
 }
+
 
 /* NAVBAR */
 
