@@ -60,7 +60,7 @@ const testingVideos = [
 
 const initialVideoState = {
   inputValue: '',
-  videos: [],
+  videos: JSON.parse(localStorage.getItem('videos')) || [],
   selectedVideo: null,
   likedVideos: JSON.parse(localStorage.getItem('liked')) || [],
 }
@@ -79,6 +79,8 @@ export const VideoContextProvider = ({ children }) => {
     })
 
     dispatch({ type: FETCH_VIDEOS, payload: response.data.items })
+
+    localStorage.setItem('videos', JSON.stringify(response.data.items))
 
     const lastQueriesSet = new Set()
     const lastQueriesArray = JSON.parse(localStorage.getItem('queries')) || []

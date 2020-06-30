@@ -4,7 +4,7 @@ import { TOGGLE_MENU } from '../CONSTS_AND_TYPES'
 
 export const MenuContext = React.createContext()
 const initialMenuState = {
-  bigger: true,
+  bigger: false,
 }
 
 export const MenuContextProvider = ({ children }) => {

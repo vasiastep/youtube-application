@@ -39,10 +39,10 @@ export const WatchVideo = ({ video }) => {
   }
 
   return (
-    <div className="p-3" style={{ height: '80vh', width: '80vw' }}>
+    <div className="p-3 watch-video-frame">
       <iframe
         frameBorder="0"
-        height="100%"
+        height="90%"
         width="100%"
         title="Video Player"
         src={videoSrc}
@@ -53,7 +53,7 @@ export const WatchVideo = ({ video }) => {
           <span>
             {video.snippet.title} - {video.snippet.channelTitle}
           </span>
-          <span>
+          <span style={{ display: 'flex', marginTop: '5px' }}>
             <FontAwesomeIcon
               title="Добавити в список вподобань"
               icon={faThumbsUp}

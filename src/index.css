@@ -14,6 +14,72 @@ code {
 
 /* NAVBAR */
 
+@media (max-width: 480px) {
+  .custom-nav {
+    width: 100%;
+  }
+
+  .font-awesome-settings {
+    display: none;
+  }
+
+  .video-info {
+    width: 200px;
+    font-size: 12px;
+  }
+
+  .video-list {
+    padding: 15px 15px!important;
+  }
+
+  .bigger {
+    height: 80px!important;
+    width: 142px!important;
+  }
+
+  .watch-container {
+    flex-direction: column;
+  }
+
+  .watch-video-frame {
+    height: 35vh!important;
+    width: 100vw!important;
+  }
+
+  .left-menu {
+    z-index: 10;
+    position: absolute;
+    width: 100px;
+  }
+}
+
+.channel {
+  width: 100px!important;
+  height: 100px!important;
+  border-radius: 50%;
+}
+
+.bigger {
+  height: 100px;
+  width: 177px;
+}
+
+.smaller {
+  height: 50px;
+  width: 89px;
+  margin-top: 1em;
+}
+
+.watch-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.watch-video-frame {
+  height: 80vh;
+  width: 80vw;
+}
+
 .custom-nav {
   height: 50px;
   overflow: hidden;
@@ -65,6 +131,8 @@ code {
 /* NAVBAR */
 
 /* LEFT MENU */
+
+
 
 .left-menu-item {
   padding: 5px 20px;

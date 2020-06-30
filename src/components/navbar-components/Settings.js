@@ -5,8 +5,9 @@ import { ThemeContext } from '../../context/Theme/ThemeContext'
 
 export const Settings = () => {
   const { theme } = useContext(ThemeContext)
+
   return (
-    <div>
+    <div className="font-awesome-settings">
       <FontAwesomeIcon
         title="Створити"
         icon={faVideo}

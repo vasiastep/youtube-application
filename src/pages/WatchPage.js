@@ -12,7 +12,7 @@ export const WatchPage = () => {
   return (
     <>
       <div
-        className="d-flex justify-content-between"
+        className="watch-container"
         style={{ backgroundColor: theme === 'dark' ? '#181818' : '#F9F9F9', minHeight: '100vh' }}
       >
         <WatchVideo video={selected} />
